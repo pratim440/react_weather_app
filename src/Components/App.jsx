@@ -12,7 +12,7 @@ const App = () => {
     const [maxTemp, setMaxTemp] = useState();
     const getData = async (val) => {
         try {
-            const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${val}&units=metric&appid=ef38631b1bb45a62c45f109c04dc8fdc`)
+            const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${val}&units=metric&appid=${process.env.REACT_APP_APP_ID}`)
             console.log(res.data.name);
             setIcon(res.data.weather[0].icon);
             setCity(res.data.name);
@@ -26,7 +26,7 @@ const App = () => {
         }
     }
 useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=tinsukia&units=metric&appid=ef38631b1bb45a62c45f109c04dc8fdc`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=tinsukia&units=metric&appid=${process.env.REACT_APP_APP_ID}`)
     .then((res) => {
         return res.json();
     })
